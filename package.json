@@ -1,0 +1,31 @@
+{
+  "name": "rds-sequalizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development webpack",
+    "run:dev": "NODE_ENV=development nodemon build/index.js",
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^7.17.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.2",
+    "nodemon": "^2.0.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
+  }
+}
