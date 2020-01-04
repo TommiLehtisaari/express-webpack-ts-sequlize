@@ -1,12 +1,18 @@
 import { Sequelize } from 'sequelize'
+import * as config from 'config'
 import AuthorModel from './models/author'
 import GenreModel from './models/genre'
 import BookModel from './models/book'
 
-const sequelize = new Sequelize('books', 'node_user', 'XC3cpdrQEY3pGCm3P74cwzfx63rx', {
-  host: 'localhost',
-  dialect: 'postgres'
-})
+const sequelize = new Sequelize(
+  config.get('postgres.database'),
+  config.get('postgres.user'),
+  config.get('postgres.password'),
+  {
+    host: config.get('postgres.host'),
+    dialect: 'postgres'
+  }
+)
 
 // Tables initialization
 const Author = AuthorModel(sequelize)

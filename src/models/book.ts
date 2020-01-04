@@ -8,6 +8,7 @@ export default (sequelize: any) => {
       defaultValue: Sequelize.literal('uuid_generate_v4()')
     },
     title: STRING,
-    published: INTEGER
+    published: INTEGER,
+    pages: INTEGER
   })
 }

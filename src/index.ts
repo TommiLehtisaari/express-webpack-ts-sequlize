@@ -1,5 +1,4 @@
 import * as express from 'express'
-import { Request, Response } from 'express'
 import { routes } from './routes'
 
 const app = express()

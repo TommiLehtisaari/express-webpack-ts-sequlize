@@ -118,7 +118,7 @@ eval("\nexports.__esModule = true;\nvar sequelize_1 = __webpack_require__(/*! se
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar sequelize_1 = __webpack_require__(/*! sequelize */ \"sequelize\");\nexports[\"default\"] = (function (sequelize) {\n    return sequelize.define('book', {\n        id: {\n            type: sequelize_1.UUID,\n            primaryKey: true,\n            defaultValue: sequelize_1.Sequelize.literal('uuid_generate_v4()')\n        },\n        title: sequelize_1.STRING,\n        published: sequelize_1.INTEGER\n    });\n});\n\n\n//# sourceURL=webpack:///./src/models/book.ts?");
+eval("\nexports.__esModule = true;\nvar sequelize_1 = __webpack_require__(/*! sequelize */ \"sequelize\");\nexports[\"default\"] = (function (sequelize) {\n    return sequelize.define('book', {\n        id: {\n            type: sequelize_1.UUID,\n            primaryKey: true,\n            defaultValue: sequelize_1.Sequelize.literal('uuid_generate_v4()')\n        },\n        title: sequelize_1.STRING,\n        published: sequelize_1.INTEGER,\n        pages: sequelize_1.INTEGER\n    });\n});\n\n\n//# sourceURL=webpack:///./src/models/book.ts?");
 
 /***/ }),
 
@@ -178,7 +178,18 @@ eval("\nexports.__esModule = true;\nvar express = __webpack_require__(/*! expres
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar sequelize_1 = __webpack_require__(/*! sequelize */ \"sequelize\");\nvar author_1 = __webpack_require__(/*! ./models/author */ \"./src/models/author.ts\");\nvar genre_1 = __webpack_require__(/*! ./models/genre */ \"./src/models/genre.ts\");\nvar book_1 = __webpack_require__(/*! ./models/book */ \"./src/models/book.ts\");\nvar sequelize = new sequelize_1.Sequelize('books', 'node_user', 'XC3cpdrQEY3pGCm3P74cwzfx63rx', {\n    host: 'localhost',\n    dialect: 'postgres'\n});\n// Tables initialization\nvar Author = author_1[\"default\"](sequelize);\nvar Genre = genre_1[\"default\"](sequelize);\nvar Book = book_1[\"default\"](sequelize);\n// Author of the book\nAuthor.hasMany(Book);\nBook.belongsTo(Author);\n// connector table to books and genres\nvar bookGenre = sequelize.define('bookGenre', {});\nBook.belongsToMany(Genre, { through: bookGenre });\nsequelize.sync({ force: false }).then(function () {\n    console.log(\"Database & tables created!\");\n});\nexports[\"default\"] = {\n    Author: Author,\n    Genre: Genre,\n    Book: Book\n};\n\n\n//# sourceURL=webpack:///./src/store.ts?");
+eval("\nexports.__esModule = true;\nvar sequelize_1 = __webpack_require__(/*! sequelize */ \"sequelize\");\nvar config = __webpack_require__(/*! config */ \"config\");\nvar author_1 = __webpack_require__(/*! ./models/author */ \"./src/models/author.ts\");\nvar genre_1 = __webpack_require__(/*! ./models/genre */ \"./src/models/genre.ts\");\nvar book_1 = __webpack_require__(/*! ./models/book */ \"./src/models/book.ts\");\nvar sequelize = new sequelize_1.Sequelize(config.get('postgres.database'), config.get('postgres.user'), config.get('postgres.password'), {\n    host: config.get('postgres.host'),\n    dialect: 'postgres'\n});\n// Tables initialization\nvar Author = author_1[\"default\"](sequelize);\nvar Genre = genre_1[\"default\"](sequelize);\nvar Book = book_1[\"default\"](sequelize);\n// Author of the book\nAuthor.hasMany(Book);\nBook.belongsTo(Author);\n// connector table to books and genres\nvar bookGenre = sequelize.define('bookGenre', {});\nBook.belongsToMany(Genre, { through: bookGenre });\nsequelize.sync({ force: false }).then(function () {\n    console.log(\"Database & tables created!\");\n});\nexports[\"default\"] = {\n    Author: Author,\n    Genre: Genre,\n    Book: Book\n};\n\n\n//# sourceURL=webpack:///./src/store.ts?");
+
+/***/ }),
+
+/***/ "config":
+/*!*************************!*\
+  !*** external "config" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"config\");\n\n//# sourceURL=webpack:///external_%22config%22?");
 
 /***/ }),
 

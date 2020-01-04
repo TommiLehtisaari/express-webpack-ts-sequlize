@@ -1,0 +1,8 @@
+{
+  "postgres": {
+    "password": "RDS_SEQUELIZE_POSTGRES_PASSWORD",
+    "host": "RDS_SEQUELIZE_POSTGRES_HOST",
+    "database": "RDS_SEQUELIZE_POSTGRES_DATABASE",
+    "user": "RDS_SEQUELIZE_POSTGRES_USER"
+  }
+}
