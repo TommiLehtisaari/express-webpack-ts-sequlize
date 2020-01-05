@@ -10,7 +10,11 @@ const sequelize = new Sequelize(
   config.get('postgres.password'),
   {
     host: config.get('postgres.host'),
-    dialect: 'postgres'
+    dialect: 'postgres',
+    define: {
+      // underscored: true,
+      timestamps: false
+    }
   }
 )
 
@@ -26,8 +30,9 @@ Book.belongsTo(Author)
 // connector table to books and genres
 const bookGenre = sequelize.define('bookGenre', {})
 Book.belongsToMany(Genre, { through: bookGenre })
+Genre.belongsToMany(Book, { through: bookGenre })
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false, alter: false }).then(() => {
   console.log(`Database & tables created!`)
 })
 

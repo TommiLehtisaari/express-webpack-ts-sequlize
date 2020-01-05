@@ -1,4 +1,4 @@
-import { Sequelize, STRING, UUID, Model } from 'sequelize'
+import { Sequelize, STRING, UUID } from 'sequelize'
 
 export default (sequelize: any) => {
   return sequelize.define('genre', {
