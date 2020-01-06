@@ -28,16 +28,17 @@ Author.hasMany(Book)
 Book.belongsTo(Author)
 
 // connector table to books and genres
-const bookGenre = sequelize.define('bookGenre', {})
-Book.belongsToMany(Genre, { through: bookGenre })
-Genre.belongsToMany(Book, { through: bookGenre })
+const BookGenre = sequelize.define('bookGenre', {})
+Book.belongsToMany(Genre, { through: BookGenre })
+Genre.belongsToMany(Book, { through: BookGenre })
 
 sequelize.sync({ force: false, alter: false }).then(() => {
-  console.log(`Database & tables created!`)
+  console.log(`Database & tables created! 💾`)
 })
 
 export default {
   Author,
   Genre,
-  Book
+  Book,
+  BookGenre
 }
